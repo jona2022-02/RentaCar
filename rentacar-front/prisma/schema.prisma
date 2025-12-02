@@ -1,0 +1,214 @@
+// =====================================================
+// Prisma Schema para RentaCar
+// Base de datos: MySQL (AlwaysData)
+// =====================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// =====================================================
+// MODELO: Categoria
+// =====================================================
+model Categoria {
+  id            String     @id @default(uuid()) @db.VarChar(36)
+  nombre        String     @db.VarChar(100)
+  descripcion   String?    @db.Text
+  creadoEn      DateTime   @default(now()) @map("creado_en")
+  actualizadoEn DateTime   @updatedAt @map("actualizado_en")
+  
+  vehiculos     Vehiculo[]
+
+  @@map("categorias")
+}
+
+// =====================================================
+// MODELO: Usuario
+// =====================================================
+model Usuario {
+  id              String    @id @default(uuid()) @db.VarChar(36)
+  email           String    @unique @db.VarChar(255)
+  password        String    @db.VarChar(255)
+  nombre          String    @db.VarChar(150)
+  apellido        String?   @db.VarChar(150)
+  telefono        String?   @db.VarChar(20)
+  direccion       String?   @db.Text
+  ciudad          String?   @db.VarChar(100)
+  fechaNacimiento DateTime? @map("fecha_nacimiento") @db.Date
+  numeroLicencia  String?   @map("numero_licencia") @db.VarChar(50)
+  rol             RolUsuario @default(CLIENTE)
+  estado          EstadoUsuario @default(ACTIVO)
+  creadoEn        DateTime  @default(now()) @map("creado_en")
+  actualizadoEn   DateTime  @updatedAt @map("actualizado_en")
+
+  rentas          Renta[]
+  pagos           Pago[]
+
+  @@index([email], map: "idx_email")
+  @@index([rol], map: "idx_rol")
+  @@index([estado], map: "idx_estado")
+  @@map("usuarios")
+}
+
+enum RolUsuario {
+  ADMIN
+  CLIENTE
+}
+
+enum EstadoUsuario {
+  ACTIVO
+  INACTIVO
+  SUSPENDIDO
+}
+
+// =====================================================
+// MODELO: Vehiculo
+// =====================================================
+model Vehiculo {
+  id                      String    @id @default(uuid()) @db.VarChar(36)
+  categoriaId             String    @map("categoria_id") @db.VarChar(36)
+  marca                   String    @db.VarChar(100)
+  modelo                  String    @db.VarChar(100)
+  anio                    Int       @map("año")
+  color                   String?   @db.VarChar(50)
+  placa                   String    @unique @db.VarChar(20)
+  numeroMotor             String?   @map("numero_motor") @db.VarChar(50)
+  numeroChasis            String?   @map("numero_chasis") @db.VarChar(50)
+  kilometraje             Int       @default(0)
+  tipoCombustible         TipoCombustible @default(GASOLINA) @map("tipo_combustible")
+  transmision             Transmision @default(MANUAL)
+  numeroPasajeros         Int       @default(5) @map("numero_pasajeros")
+  numeroPuertas           Int       @default(4) @map("numero_puertas")
+  tieneAireAcondicionado  Boolean   @default(true) @map("tiene_aire_acondicionado")
+  descripcion             String?   @db.Text
+  precioDia               Decimal   @map("precio_dia") @db.Decimal(10, 2)
+  precioSemana            Decimal?  @map("precio_semana") @db.Decimal(10, 2)
+  precioMes               Decimal?  @map("precio_mes") @db.Decimal(10, 2)
+  depositoRequerido       Decimal   @default(0.00) @map("deposito_requerido") @db.Decimal(10, 2)
+  imagenes                Json?
+  disponible              Boolean   @default(true)
+  creadoEn                DateTime  @default(now()) @map("creado_en")
+  actualizadoEn           DateTime  @updatedAt @map("actualizado_en")
+
+  categoria               Categoria @relation(fields: [categoriaId], references: [id], onDelete: Restrict)
+  rentas                  Renta[]
+
+  @@index([disponible], map: "idx_disponible")
+  @@index([categoriaId], map: "idx_categoria")
+  @@index([precioDia], map: "idx_precio")
+  @@map("vehiculos")
+}
+
+enum TipoCombustible {
+  GASOLINA
+  DIESEL
+  ELECTRICO
+  HIBRIDO
+}
+
+enum Transmision {
+  MANUAL
+  AUTOMATICA
+}
+
+// =====================================================
+// MODELO: Renta
+// =====================================================
+model Renta {
+  id                    String    @id @default(uuid()) @db.VarChar(36)
+  vehiculoId            String    @map("vehiculo_id") @db.VarChar(36)
+  usuarioId             String    @map("usuario_id") @db.VarChar(36)
+  fechaInicio           DateTime  @map("fecha_inicio") @db.Date
+  fechaFin              DateTime  @map("fecha_fin") @db.Date
+  fechaEntregaReal      DateTime? @map("fecha_entrega_real") @db.DateTime
+  fechaDevolucionReal   DateTime? @map("fecha_devolucion_real") @db.DateTime
+  diasRenta             Int       @map("dias_renta")
+  precioTotal           Decimal   @map("precio_total") @db.Decimal(10, 2)
+  deposito              Decimal   @default(0.00) @db.Decimal(10, 2)
+  costoAdicional        Decimal   @default(0.00) @map("costo_adicional") @db.Decimal(10, 2)
+  razonAdicional        String?   @map("razon_adicional") @db.Text
+  lugarRecogida         String?   @map("lugar_recogida") @db.VarChar(200)
+  lugarEntrega          String?   @map("lugar_entrega") @db.VarChar(200)
+  kilometrajeInicio     Int?      @map("kilometraje_inicio")
+  kilometrajeFin        Int?      @map("kilometraje_fin")
+  nivelCombustibleInicio NivelCombustible? @map("nivel_combustible_inicio")
+  nivelCombustibleFin    NivelCombustible? @map("nivel_combustible_fin")
+  estado                EstadoRenta @default(PENDIENTE)
+  notas                 String?   @db.Text
+  fotoAntes             Json?     @map("foto_antes")
+  fotoDespues           Json?     @map("foto_despues")
+  creadoEn              DateTime  @default(now()) @map("creado_en")
+  actualizadoEn         DateTime  @updatedAt @map("actualizado_en")
+
+  vehiculo              Vehiculo  @relation(fields: [vehiculoId], references: [id], onDelete: Restrict)
+  usuario               Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Restrict)
+  pagos                 Pago[]
+
+  @@index([usuarioId], map: "idx_usuario")
+  @@index([vehiculoId], map: "idx_vehiculo")
+  @@index([estado], map: "idx_estado")
+  @@index([fechaInicio, fechaFin], map: "idx_fechas")
+  @@map("rentas")
+}
+
+enum NivelCombustible {
+  VACIO
+  UN_CUARTO  @map("1/4")
+  MEDIO      @map("1/2")
+  TRES_CUARTOS @map("3/4")
+  LLENO
+}
+
+enum EstadoRenta {
+  PENDIENTE
+  CONFIRMADA
+  EN_CURSO
+  COMPLETADA
+  CANCELADA
+  RECHAZADA
+}
+
+// =====================================================
+// MODELO: Pago
+// =====================================================
+model Pago {
+  id          String      @id @default(uuid()) @db.VarChar(36)
+  rentaId     String      @map("renta_id") @db.VarChar(36)
+  usuarioId   String      @map("usuario_id") @db.VarChar(36)
+  monto       Decimal     @db.Decimal(10, 2)
+  metodoPago  MetodoPago  @map("metodo_pago")
+  referencia  String?     @db.VarChar(100)
+  estado      EstadoPago  @default(PENDIENTE)
+  fechaPago   DateTime    @default(now()) @map("fecha_pago") @db.DateTime
+  notas       String?     @db.Text
+  creadoEn    DateTime    @default(now()) @map("creado_en")
+  actualizadoEn DateTime  @updatedAt @map("actualizado_en")
+
+  renta       Renta       @relation(fields: [rentaId], references: [id], onDelete: Cascade)
+  usuario     Usuario     @relation(fields: [usuarioId], references: [id], onDelete: Restrict)
+
+  @@index([rentaId], map: "idx_renta")
+  @@index([usuarioId], map: "idx_usuario")
+  @@index([estado], map: "idx_estado")
+  @@map("pagos")
+}
+
+enum MetodoPago {
+  EFECTIVO
+  TARJETA
+  TRANSFERENCIA
+  PAYPAL
+  STRIPE
+}
+
+enum EstadoPago {
+  PENDIENTE
+  COMPLETADO
+  FALLIDO
+  REEMBOLSADO
+}
