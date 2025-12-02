@@ -6,9 +6,10 @@ import { getUsuarioActual } from '@/lib/auth';
 // PUT /api/usuarios/:id/password - Cambiar contraseña
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const usuarioActual = await getUsuarioActual();
 
     if (!usuarioActual) {

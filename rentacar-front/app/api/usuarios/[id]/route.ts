@@ -6,7 +6,7 @@ import { getUsuarioActual } from '@/lib/auth';
 // GET /api/usuarios/:id - Obtener usuario por ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const usuarioActual = await getUsuarioActual();
@@ -18,7 +18,7 @@ export async function GET(
       );
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Solo ADMIN puede ver otros usuarios, usuarios pueden ver su propio perfil
     if (usuarioActual.rol !== 'ADMIN' && usuarioActual.id !== id) {
@@ -63,9 +63,10 @@ export async function GET(
 // PUT /api/usuarios/:id - Actualizar usuario
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const usuarioActual = await getUsuarioActual();
 
     if (!usuarioActual) {
@@ -149,9 +150,10 @@ export async function PUT(
 // DELETE /api/usuarios/:id - Eliminar usuario
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const usuarioActual = await getUsuarioActual();
 
     if (!usuarioActual) {
