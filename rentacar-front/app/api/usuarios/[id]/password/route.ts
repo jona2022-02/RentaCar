@@ -19,8 +19,6 @@ export async function PUT(
       );
     }
 
-    const { id } = params;
-
     // Solo puede cambiar su propia contraseña (o ADMIN puede cambiar la de otros)
     if (usuarioActual.rol !== 'ADMIN' && usuarioActual.id !== id) {
       return NextResponse.json(

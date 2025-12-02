@@ -76,7 +76,6 @@ export async function PUT(
       );
     }
 
-    const { id } = params;
     const body = await request.json();
     const { nombre, apellido, telefono, direccion, ciudad, rol, estado } = body;
 
@@ -170,8 +169,6 @@ export async function DELETE(
         { status: 403 }
       );
     }
-
-    const { id } = params;
 
     // Verificar que el usuario existe
     const usuario = await prisma.usuario.findUnique({
