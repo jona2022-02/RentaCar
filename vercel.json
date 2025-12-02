@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd rentacar-front && npm run build",
+  "outputDirectory": "rentacar-front/.next",
+  "devCommand": "cd rentacar-front && npm run dev",
+  "installCommand": "cd rentacar-front && npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"]
+}
