@@ -41,7 +41,10 @@ export interface Usuario {
   id: string;
   email: string;
   nombre: string;
-  telefono?: string;
+  apellido?: string | null;
+  telefono?: string | null;
+  direccion?: string | null;
+  ciudad?: string | null;
   rol: RolUsuario;
   creadoEn: Date;
   actualizadoEn: Date;

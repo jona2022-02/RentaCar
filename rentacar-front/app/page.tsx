@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#6D9ACD] via-[#8AB5E0] to-[#5F8EBB] text-white py-20 md:py-32">
+      <section className="relative bg-linear-to-br from-[#6D9ACD] via-[#8AB5E0] to-[#5F8EBB] text-white py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
            
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
 
         {/* Decorative element */}
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#E8F1FF] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-[#E8F1FF] to-transparent"></div>
       </section>
 
       {/* Features Section */}
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#6D9ACD] to-[#3A6EA5] text-white">
+      <section className="py-20 bg-linear-to-r from-[#6D9ACD] to-[#3A6EA5] text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             No Esperes Más. Tu Próximo Destino te Llama

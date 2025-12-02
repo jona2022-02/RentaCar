@@ -197,7 +197,7 @@ export default function DashboardPage() {
                   <div key={solicitud.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex gap-4">
                       {/* Imagen del vehículo */}
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         {solicitud.vehiculo.imagen ? (
                           <img
                             src={solicitud.vehiculo.imagen}

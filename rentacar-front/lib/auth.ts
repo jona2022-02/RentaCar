@@ -18,6 +18,8 @@ export async function getUsuarioActual() {
       nombre: true,
       apellido: true,
       telefono: true,
+      direccion: true,
+      ciudad: true,
       rol: true,
       estado: true,
     },

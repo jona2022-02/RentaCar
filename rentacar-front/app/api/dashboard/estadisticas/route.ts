@@ -153,7 +153,7 @@ export async function GET(request: NextRequest) {
     ]);
 
     // Formatear actividad reciente
-    const actividad = actividadReciente.map((renta) => ({
+    const actividad = actividadReciente.map((renta: any) => ({
       id: renta.id,
       tipo: 'renta',
       estado: renta.estado,
@@ -168,7 +168,7 @@ export async function GET(request: NextRequest) {
       : 0;
 
     // Formatear solicitudes recientes
-    const solicitudes = solicitudesRecientes.map((renta) => {
+    const solicitudes = solicitudesRecientes.map((renta: any) => {
       const imagenes = renta.vehiculo.imagenes as string[] | null;
       return {
         id: renta.id,

@@ -196,7 +196,7 @@ export default function MisRentasPage() {
                     <img 
                       src={renta.vehiculo.imagenes.url} 
                       alt={`${renta.vehiculo.marca} ${renta.vehiculo.modelo}`}
-                      className="w-32 h-32 object-cover rounded-lg flex-shrink-0"
+                      className="w-32 h-32 object-cover rounded-lg shrink-0"
                     />
                   )}
                   
