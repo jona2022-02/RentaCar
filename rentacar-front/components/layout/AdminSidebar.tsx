@@ -83,15 +83,6 @@ export default function AdminSidebar({ children }: { children: ReactNode }) {
             </svg>
             {sidebarAbierto && <span className="overflow-hidden text-ellipsis">Solicitudes</span>}
           </Link>
-          <Link 
-            href="/reportes" 
-            className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-50 active:bg-blue-50 transition whitespace-nowrap"
-          >
-            <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            {sidebarAbierto && <span className="overflow-hidden text-ellipsis">Reportes</span>}
-          </Link>
         </nav>
       </aside>
 
@@ -174,17 +165,7 @@ export default function AdminSidebar({ children }: { children: ReactNode }) {
             </svg>
             <span>Solicitudes</span>
           </Link>
-          <Link 
-            href="/reportes" 
-            className="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-50 active:bg-blue-50 transition"
-            onClick={() => setSidebarAbierto(false)}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>Reportes</span>
-          </Link>
-        </nav>
+         </nav>
       </aside>
 
       {/* Overlay para móvil */}
