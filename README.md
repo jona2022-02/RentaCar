@@ -1,8 +1,8 @@
-# 🚗 RentaCar - Sistema de Renta de Vehículos
+#  RentaCar - Sistema de Renta de Vehículos
 
 Sistema completo de gestión de renta de vehículos desarrollado con **Next.js 16**, **Prisma ORM**, **MySQL** y **TypeScript**.
 
-## 📋 Descripción
+##  Descripción
 
 RentaCar es una plataforma moderna para la gestión integral de renta de vehículos que incluye:
 
@@ -14,7 +14,7 @@ RentaCar es una plataforma moderna para la gestión integral de renta de vehícu
 -  Dashboard administrativo con estadísticas
 - 📱 Diseño responsive y UI/UX moderna
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 ### Frontend
 - **Next.js 16.0.3** - Framework React con App Router
@@ -141,7 +141,7 @@ Consulta la documentación detallada de los endpoints en:
 - [CRUD de Usuarios](./API_USUARIOS_CRUD.md)
 - [Documentación de Base de Datos](./database/README.md)
 
-## 🎯 Características Principales
+##  Características Principales
 
 ### Para Clientes
 - ✅ Registro y login seguro
@@ -164,7 +164,7 @@ Consulta la documentación detallada de los endpoints en:
 - ✅ Ver reportes y métricas
 - ✅ Activar/Desactivar usuarios
 
-## 🔐 Roles y Permisos
+##  Roles y Permisos
 
 ### Administrador
 - Acceso completo al dashboard
@@ -197,7 +197,7 @@ Consulta la documentación detallada de los endpoints en:
 - `CANCELADA` - Cancelada por el cliente
 - `RECHAZADA` - Rechazada por el administrador
 
-## 🎨 UI/UX
+##  UI/UX
 
 El diseño utiliza una paleta de colores elegante:
 - **Stone/Beige** - Tonos principales suaves y profesionales
@@ -206,58 +206,20 @@ El diseño utiliza una paleta de colores elegante:
 
 Componentes UI de **shadcn/ui** para una experiencia moderna y consistente.
 
-## 📱 Responsive Design
+##  Responsive Design
 
 La aplicación está completamente optimizada para:
-- 📱 Móviles (320px+)
-- 📱 Tablets (768px+)
-- 💻 Laptops (1024px+)
+-  Móviles (320px+)
+-  Tablets (768px+)
+-  Laptops (1024px+)
 - 🖥️ Desktops (1280px+)
 
-## 🔒 Seguridad
+##  Seguridad
 
-- ✅ Autenticación con NextAuth.js
-- ✅ Contraseñas encriptadas con bcrypt
-- ✅ Protección de rutas por rol
-- ✅ Validación de datos en servidor
-- ✅ Prevención de SQL injection (Prisma)
-- ✅ Variables de entorno para datos sensibles
+-  Autenticación con NextAuth.js
+-  Contraseñas encriptadas con bcrypt
+-  Protección de rutas por rol
+-  Validación de datos en servidor
+-  Prevención de SQL injection (Prisma)
+-  Variables de entorno para datos sensibles
 
-## 🚀 Despliegue
-
-### Vercel (Recomendado para Frontend)
-
-```bash
-cd rentacar-front
-vercel deploy
-```
-
-### Variables de entorno en producción:
-- Configurar `DATABASE_URL` con tu servidor MySQL
-- Configurar `NEXTAUTH_SECRET` seguro
-- Configurar `NEXTAUTH_URL` con tu dominio
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
-## 👨‍💻 Autor
-
-**Jonathan**
-- GitHub: [@jona2022-02](https://github.com/jona2022-02)
-
-## 📞 Soporte
-
-Para reportar bugs o solicitar features, por favor abre un [issue](https://github.com/jona2022-02/RentaCar/issues).
-
----
-
-⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
