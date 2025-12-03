@@ -45,17 +45,17 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4 text-gray-900">Soporte</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/ayuda" className="text-gray-600 hover:text-stone-700 transition">
+                <Link href="#" className="text-gray-600 hover:text-stone-700 transition">
                   Centro de Ayuda
                 </Link>
               </li>
               <li>
-                <Link href="/terminos" className="text-gray-600 hover:text-stone-700 transition">
+                <Link href="#" className="text-gray-600 hover:text-stone-700 transition">
                   Términos y Condiciones
                 </Link>
               </li>
               <li>
-                <Link href="/privacidad" className="text-gray-600 hover:text-stone-700 transition">
+                <Link href="#" className="text-gray-600 hover:text-stone-700 transition">
                   Política de Privacidad
                 </Link>
               </li>
@@ -67,8 +67,8 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4 text-gray-900">Contacto</h3>
             <ul className="space-y-2 text-gray-600 text-sm">
               <li>Email: info@rentacar.com</li>
-              <li>Tel: +52 (55) 1234-5678</li>
-              <li>Dirección: CDMX, México</li>
+              <li>Tel: +503 7643-3245</li>
+              <li>Dirección: El Salvador, San Salvador</li>
             </ul>
           </div>
         </div>
