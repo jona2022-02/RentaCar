@@ -1,8 +1,8 @@
-# 📚 Documentación del Proyecto RentaCar
+#  Documentación del Proyecto RentaCar
 
 Esta carpeta contiene toda la documentación técnica del proyecto.
 
-## 📄 Archivos Disponibles
+##  Archivos Disponibles
 
 ### API Documentation
 - **[API_LOGIN_DOCUMENTATION.md](./API_LOGIN_DOCUMENTATION.md)** - Endpoints de autenticación
@@ -26,7 +26,7 @@ Esta carpeta contiene toda la documentación técnica del proyecto.
   - Instrucciones de importación
   - Datos de prueba
 
-## 🚀 Guía Rápida
+##  Guía Rápida
 
 ### Autenticación
 
@@ -75,7 +75,7 @@ PUT /api/usuarios/:id/estado
 }
 ```
 
-## 🔐 Roles y Permisos
+##  Roles y Permisos
 
 | Endpoint | Admin | Cliente | Público |
 |----------|-------|---------|---------|
@@ -120,14 +120,10 @@ Fecha fin llega (COMPLETADA)
 - **CANCELADA** - Cliente canceló
 - **RECHAZADA** - Admin rechazó
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 - **Next.js 16** - Framework full-stack
 - **TypeScript** - Tipado estático
 - **Prisma ORM** - Base de datos
 - **NextAuth.js** - Autenticación
 - **MySQL** - Base de datos relacional
-
-## 📞 Soporte
-
-Para más información, consulta el [README principal](../README.md) del proyecto.
